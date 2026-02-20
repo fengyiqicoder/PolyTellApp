@@ -253,6 +253,14 @@
     .foot-links { display: flex; gap: 20px; }
     .foot-copy { font-size: 11px; color: var(--faint); }
 
+    .lang-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
+      cursor: pointer; margin-left: 12px; font-family: inherit;
+      transition: color .2s, border-color .2s;
+    }
+    .lang-btn:hover { color: #fff; border-color: rgba(255,255,255,.2); }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero { padding: 76px 20px 12px; }
@@ -271,16 +279,17 @@
       PolyTell
     </a>
     <div class="nav-links">
-      <a href="#demo">Demo</a>
-      <a href="#features">Features</a>
+      <a href="#demo" data-i18n="nav.demo">Demo</a>
+      <a href="#features" data-i18n="nav.features">Features</a>
     </div>
-    <a href="#download" class="btn" style="margin-left:auto">Add to Chrome</a>
+    <a href="#download" class="btn" style="margin-left:auto" data-i18n="nav.chrome">Add to Chrome</a>
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">中</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Turn any news into <em>Polymarket predictions.</em></h1>
+  <h1 data-i18n="hero.title">Turn any news into <em>Polymarket predictions.</em></h1>
 </section>
 
 <!-- DEMO -->
@@ -521,7 +530,7 @@
   <div class="demo-cta">
     <a href="#" class="btn-lg" onclick="return false">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-      Add to Chrome — Free
+      <span data-i18n="demo.cta">Add to Chrome — Free</span>
     </a>
   </div>
 </section>
@@ -530,33 +539,33 @@
 <section id="features" class="features">
   <div class="fcard">
     <div class="fcard-ico">🧠</div>
-    <div class="fcard-t">AI Event Extraction</div>
-    <div class="fcard-d">One tap extracts key events from any article or social feed. Works with infinite-scroll pages like X — new content is analyzed as you browse.</div>
+    <div class="fcard-t" data-i18n="feat.ai.t">AI Event Extraction</div>
+    <div class="fcard-d" data-i18n="feat.ai.d">One tap extracts key events from any article or social feed. Works with infinite-scroll pages like X — new content is analyzed as you browse.</div>
   </div>
   <div class="fcard">
     <div class="fcard-ico">📊</div>
-    <div class="fcard-t">Inline Prediction Cards</div>
-    <div class="fcard-d">Polymarket odds appear directly below the relevant paragraph. No popups, no tab switching — just read and see the market's take.</div>
+    <div class="fcard-t" data-i18n="feat.card.t">Inline Prediction Cards</div>
+    <div class="fcard-d" data-i18n="feat.card.d">Polymarket odds appear directly below the relevant paragraph. No popups, no tab switching — just read and see the market's take.</div>
   </div>
   <div class="fcard">
     <div class="fcard-ico">🌐</div>
-    <div class="fcard-t">Works Everywhere</div>
-    <div class="fcard-d">Any news site, any language. PolyTell auto-detects your browser language and supports English and Chinese interfaces out of the box.</div>
+    <div class="fcard-t" data-i18n="feat.global.t">Works Everywhere</div>
+    <div class="fcard-d" data-i18n="feat.global.d">Any news site, any language. PolyTell auto-detects your browser language and supports English and Chinese interfaces out of the box.</div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="download">
-  <h2>Start reading between the lines</h2>
-  <p>Free to install. Works on any news site.</p>
+  <h2 data-i18n="cta.title">Start reading between the lines</h2>
+  <p data-i18n="cta.sub">Free to install. Works on any news site.</p>
   <a href="#" class="btn-lg" onclick="return false">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-    Add to Chrome — Free
+    <span data-i18n="cta.btn">Add to Chrome — Free</span>
   </a>
   <div class="cta-perks">
-    <span>No account required</span>
-    <span>Works on all news sites</span>
-    <span>English &amp; Chinese</span>
+    <span data-i18n="cta.p1">No account required</span>
+    <span data-i18n="cta.p2">Works on all news sites</span>
+    <span data-i18n="cta.p3">English &amp; Chinese</span>
   </div>
 </section>
 
@@ -567,23 +576,111 @@
     PolyTell
   </a>
   <div class="foot-links">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Contact</a>
+    <a href="#" data-i18n="foot.privacy">Privacy</a>
+    <a href="#" data-i18n="foot.terms">Terms</a>
+    <a href="#" data-i18n="foot.contact">Contact</a>
   </div>
   <span class="foot-copy">&copy; 2025 PolyTell</span>
 </footer>
 
 <script>
-// Nav scroll
+// ── i18n ──
+const I18N = {
+  en: {
+    'nav.demo': 'Demo',
+    'nav.features': 'Features',
+    'nav.chrome': 'Add to Chrome',
+    'hero.title': 'Turn any news into <em>Polymarket predictions.</em>',
+    'demo.cta': 'Add to Chrome — Free',
+    'feat.ai.t': 'AI Event Extraction',
+    'feat.ai.d': 'One tap extracts key events from any article or social feed. Works with infinite-scroll pages like X — new content is analyzed as you browse.',
+    'feat.card.t': 'Inline Prediction Cards',
+    'feat.card.d': 'Polymarket odds appear directly below the relevant paragraph. No popups, no tab switching — just read and see the market\'s take.',
+    'feat.global.t': 'Works Everywhere',
+    'feat.global.d': 'Any news site, any language. PolyTell auto-detects your browser language and supports English and Chinese interfaces out of the box.',
+    'cta.title': 'Start reading between the lines',
+    'cta.sub': 'Free to install. Works on any news site.',
+    'cta.btn': 'Add to Chrome — Free',
+    'cta.p1': 'No account required',
+    'cta.p2': 'Works on all news sites',
+    'cta.p3': 'English & Chinese',
+    'foot.privacy': 'Privacy',
+    'foot.terms': 'Terms',
+    'foot.contact': 'Contact',
+    'page.title': 'PolyTell — Read News. See the Odds.',
+    'page.desc': 'PolyTell surfaces real Polymarket prediction odds inside the news you read.'
+  },
+  zh: {
+    'nav.demo': '演示',
+    'nav.features': '功能',
+    'nav.chrome': '添加到 Chrome',
+    'hero.title': '将任何新闻转化为 <em>Polymarket 预测。</em>',
+    'demo.cta': '添加到 Chrome — 免费',
+    'feat.ai.t': 'AI 事件提取',
+    'feat.ai.d': '一键提取任何文章或社交动态中的关键事件。支持 X 等无限滚动页面——浏览时自动分析新内容。',
+    'feat.card.t': '内联预测卡片',
+    'feat.card.d': 'Polymarket 赔率直接显示在相关段落下方。无弹窗、无需切换标签页——边读边看市场观点。',
+    'feat.global.t': '全球通用',
+    'feat.global.d': '支持任何新闻网站、任何语言。PolyTell 自动检测浏览器语言，开箱即用支持中英文界面。',
+    'cta.title': '开始洞察新闻背后的趋势',
+    'cta.sub': '免费安装，适用于任何新闻网站。',
+    'cta.btn': '添加到 Chrome — 免费',
+    'cta.p1': '无需注册账号',
+    'cta.p2': '适用于所有新闻网站',
+    'cta.p3': '支持中英文',
+    'foot.privacy': '隐私政策',
+    'foot.terms': '使用条款',
+    'foot.contact': '联系我们',
+    'page.title': 'PolyTell — 读新闻，看赔率。',
+    'page.desc': 'PolyTell 将真实的 Polymarket 预测赔率嵌入你正在阅读的新闻中。'
+  }
+};
+
+let curLang = 'en';
+
+function setLang(lang) {
+  curLang = lang;
+  const dict = I18N[lang] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] != null) {
+      if (key === 'hero.title') {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
+    }
+  });
+  document.documentElement.lang = lang;
+  document.title = dict['page.title'];
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', dict['page.desc']);
+  document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN' : '中';
+  try { localStorage.setItem('polytell-lang', lang); } catch(e) {}
+}
+
+function toggleLang() {
+  setLang(curLang === 'en' ? 'zh' : 'en');
+}
+
+function detectLang() {
+  try {
+    const saved = localStorage.getItem('polytell-lang');
+    if (saved === 'en' || saved === 'zh') return saved;
+  } catch(e) {}
+  const bl = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  return bl.startsWith('zh') ? 'zh' : 'en';
+}
+
+// ── Nav scroll ──
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
 
-// Tab system
+// ── Tab system ──
 const TABS = ['x', 'politico', 'reuters', 'tc'];
 const URLS = { x: 'x.com', politico: 'politico.com/news/congress', reuters: 'reuters.com/world/us/elections', tc: 'techcrunch.com/category/artificial-intelligence' };
 const CARDS = { x: ['xc1','xc2','xc3'], politico: ['pc1','pc2'], reuters: ['rc1','rc2'], tc: ['tc1','tc2'] };
-const CYCLE = 15000; // 15 seconds
+const CYCLE = 15000;
 
 let cur = 'x';
 let timer = null;
@@ -624,7 +721,9 @@ document.querySelectorAll('.dtab').forEach(t =>
   t.addEventListener('click', () => switchTab(t.dataset.tab))
 );
 
-// Init
+// ── Init ──
+const initLang = detectLang();
+if (initLang !== 'en') setLang(initLang);
 setTimeout(() => showCards('x'), 400);
 timer = setTimeout(() => switchTab('politico'), CYCLE);
 </script>
