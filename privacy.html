@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — PolyTell</title>
+  <meta name="description" content="PolyTell Privacy Policy — how we handle your data." />
+  <link rel="icon" href="icon100x.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #09090F;
+      --card:   #111119;
+      --border: rgba(255,255,255,.07);
+      --txt:    #F1F5F9;
+      --muted:  #8B95A5;
+      --faint:  #3E4550;
+      --brand:  #3B7AE8;
+      --accent: #E86234;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--txt); line-height: 1.7; }
+    a { text-decoration: none; color: var(--brand); }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(9,9,15,.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-in {
+      max-width: 800px; margin: 0 auto; padding: 0 24px;
+      height: 60px; display: flex; align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 16px; color: var(--txt); }
+    .logo img { width: 28px; height: 28px; border-radius: 6px; }
+    .nav-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+    .nav-right a { font-size: 13px; color: var(--muted); font-weight: 500; transition: color .2s; }
+    .nav-right a:hover { color: #fff; text-decoration: none; }
+    .lang-btn {
+      background: rgba(255,255,255,.08); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 6px; cursor: pointer;
+      transition: all .2s;
+    }
+    .lang-btn:hover { color: #fff; background: rgba(255,255,255,.12); }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 800px; margin: 0 auto;
+      padding: 100px 24px 80px;
+    }
+    .content h1 {
+      font-size: clamp(24px, 4vw, 32px); font-weight: 900;
+      letter-spacing: -1px; margin-bottom: 8px;
+    }
+    .content .updated {
+      font-size: 13px; color: var(--muted); margin-bottom: 40px;
+    }
+    .content h2 {
+      font-size: 18px; font-weight: 700; margin-top: 40px; margin-bottom: 12px;
+      color: var(--txt);
+    }
+    .content h3 {
+      font-size: 15px; font-weight: 600; margin-top: 24px; margin-bottom: 8px;
+      color: var(--txt);
+    }
+    .content p, .content li {
+      font-size: 14px; color: var(--muted); margin-bottom: 12px;
+    }
+    .content ul {
+      padding-left: 20px; margin-bottom: 12px;
+    }
+    .content li { margin-bottom: 6px; }
+    .content strong { color: var(--txt); font-weight: 600; }
+    .content .highlight {
+      background: rgba(59,122,232,.08);
+      border-left: 3px solid var(--brand);
+      padding: 12px 16px; border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .content .highlight p { margin-bottom: 0; }
+
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--faint);
+    }
+    footer a { color: var(--muted); margin: 0 12px; }
+    footer a:hover { color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo">
+      <img src="icon100x.png" alt="" />
+      PolyTell
+    </a>
+    <div class="nav-right">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">中</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ENGLISH VERSION -->
+<div class="content" id="content-en">
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: February 20, 2026</p>
+
+  <div class="highlight">
+    <p><strong>In short:</strong> PolyTell uploads webpage content solely for real-time AI analysis. We do not store your personal data long-term, sell it, or use it for advertising.</p>
+  </div>
+
+  <h2>1. Introduction</h2>
+  <p>PolyTell ("we", "our", "us") is a Chrome browser extension that surfaces real-time Polymarket prediction odds alongside the news you read. This Privacy Policy explains what data we collect, how we use it, and your rights regarding that data.</p>
+  <p>By installing and using PolyTell, you agree to the practices described in this policy.</p>
+
+  <h2>2. Data We Collect</h2>
+
+  <h3>2.1 Webpage Content</h3>
+  <p>When you activate PolyTell on a webpage, we collect:</p>
+  <ul>
+    <li><strong>Page URL</strong> — the web address of the page you are viewing.</li>
+    <li><strong>Page text paragraphs</strong> — the text content of the current page for AI analysis.</li>
+  </ul>
+
+  <h3>2.2 Anonymous User Identifier</h3>
+  <p>We generate a random UUID (universally unique identifier) stored locally in your browser. This ID is used solely to manage request rate limits and does not contain any personally identifiable information (name, email, IP address, etc.).</p>
+
+  <h3>2.3 What We Do NOT Collect</h3>
+  <ul>
+    <li>Your name, email, or any account information</li>
+    <li>Browsing history or activity outside of active PolyTell usage</li>
+    <li>Cookies or tracking identifiers from third parties</li>
+    <li>Form inputs, passwords, or any sensitive page data</li>
+  </ul>
+
+  <h2>3. How We Use Your Data</h2>
+  <p>All collected data is used exclusively for the <strong>core functionality</strong> of the extension:</p>
+  <ul>
+    <li>Webpage URL and text are sent to our API server (<strong>api.polytell.app</strong>) to perform AI-powered event extraction and match relevant Polymarket predictions.</li>
+    <li>The anonymous UUID is used to enforce fair usage rate limits.</li>
+  </ul>
+
+  <div class="highlight">
+    <p><strong>We do NOT use your data for advertising, analytics profiling, or sale to third parties — ever.</strong></p>
+  </div>
+
+  <h2>4. Data Transmission &amp; Storage</h2>
+  <ul>
+    <li>All data is transmitted over <strong>HTTPS</strong> (encrypted in transit).</li>
+    <li>Webpage content sent to our API is processed in real time and <strong>not stored permanently</strong>. Temporary processing logs may be retained for up to 7 days for debugging purposes and are then automatically deleted.</li>
+    <li>We do not maintain any user profiles or long-term data stores linked to your identity.</li>
+  </ul>
+
+  <h2>5. Third-Party Services</h2>
+  <p>PolyTell interacts with the following third-party services:</p>
+  <ul>
+    <li><strong>Polymarket</strong> — we query public Polymarket data to retrieve prediction market odds. No user data is shared with Polymarket.</li>
+    <li><strong>AI Model Provider</strong> — page content is processed by an AI model to extract relevant events. The AI provider processes data per our instructions and does not retain it.</li>
+  </ul>
+
+  <h2>6. Data Security</h2>
+  <p>We implement industry-standard security measures including HTTPS encryption, server access controls, and regular security reviews to protect your data during transmission and processing.</p>
+
+  <h2>7. Your Rights &amp; Choices</h2>
+  <ul>
+    <li><strong>Opt out anytime</strong> — simply uninstall the extension to stop all data collection.</li>
+    <li><strong>Control when data is sent</strong> — PolyTell only analyzes pages when you actively trigger it. No background data collection occurs.</li>
+    <li><strong>Data deletion</strong> — contact us to request deletion of any temporarily stored data associated with your UUID.</li>
+  </ul>
+
+  <h2>8. Children's Privacy</h2>
+  <p>PolyTell is not directed at children under the age of 13, and we do not knowingly collect data from children.</p>
+
+  <h2>9. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. Continued use of the extension after changes constitutes acceptance of the revised policy.</p>
+
+  <h2>10. Contact Us</h2>
+  <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
+  <p><strong>Email:</strong> <a href="mailto:support@polytell.app">support@polytell.app</a></p>
+</div>
+
+<!-- CHINESE VERSION -->
+<div class="content" id="content-zh" style="display:none;">
+  <h1>隐私政策</h1>
+  <p class="updated">最后更新：2026年2月20日</p>
+
+  <div class="highlight">
+    <p><strong>简要说明：</strong>PolyTell 上传网页内容仅用于实时 AI 分析。我们不会长期存储您的个人数据，不会将其出售或用于广告。</p>
+  </div>
+
+  <h2>1. 简介</h2>
+  <p>PolyTell（"我们"）是一款 Chrome 浏览器扩展程序，可在您阅读新闻时实时显示 Polymarket 预测市场赔率。本隐私政策说明我们收集哪些数据、如何使用这些数据，以及您的相关权利。</p>
+  <p>安装和使用 PolyTell 即表示您同意本政策所述的做法。</p>
+
+  <h2>2. 我们收集的数据</h2>
+
+  <h3>2.1 网页内容</h3>
+  <p>当您在网页上激活 PolyTell 时，我们会收集：</p>
+  <ul>
+    <li><strong>页面 URL</strong> — 您当前浏览的网页地址。</li>
+    <li><strong>页面文本段落</strong> — 当前页面的文本内容，用于 AI 分析。</li>
+  </ul>
+
+  <h3>2.2 匿名用户标识</h3>
+  <p>我们在您的浏览器本地生成一个随机 UUID（通用唯一标识符）。该 ID 仅用于管理请求频率限制，不包含任何个人身份信息（姓名、邮箱、IP 地址等）。</p>
+
+  <h3>2.3 我们不收集的数据</h3>
+  <ul>
+    <li>您的姓名、邮箱或任何账户信息</li>
+    <li>PolyTell 主动使用之外的浏览历史或活动</li>
+    <li>来自第三方的 Cookie 或跟踪标识符</li>
+    <li>表单输入、密码或任何敏感页面数据</li>
+  </ul>
+
+  <h2>3. 我们如何使用您的数据</h2>
+  <p>所有收集的数据仅用于扩展程序的<strong>核心功能</strong>：</p>
+  <ul>
+    <li>网页 URL 和文本发送至我们的 API 服务器（<strong>api.polytell.app</strong>），用于执行 AI 事件提取并匹配相关的 Polymarket 预测。</li>
+    <li>匿名 UUID 用于实施公平使用频率限制。</li>
+  </ul>
+
+  <div class="highlight">
+    <p><strong>我们绝不会将您的数据用于广告、分析画像或出售给第三方。</strong></p>
+  </div>
+
+  <h2>4. 数据传输与存储</h2>
+  <ul>
+    <li>所有数据均通过 <strong>HTTPS</strong> 传输（传输中加密）。</li>
+    <li>发送至 API 的网页内容仅进行实时处理，<strong>不会永久存储</strong>。临时处理日志可能保留最多 7 天用于调试，之后自动删除。</li>
+    <li>我们不维护任何与您身份关联的用户档案或长期数据存储。</li>
+  </ul>
+
+  <h2>5. 第三方服务</h2>
+  <p>PolyTell 与以下第三方服务交互：</p>
+  <ul>
+    <li><strong>Polymarket</strong> — 我们查询 Polymarket 的公开数据以获取预测市场赔率。不会与 Polymarket 共享用户数据。</li>
+    <li><strong>AI 模型提供商</strong> — 页面内容由 AI 模型处理以提取相关事件。AI 提供商按照我们的指示处理数据，不会保留数据。</li>
+  </ul>
+
+  <h2>6. 数据安全</h2>
+  <p>我们采取行业标准的安全措施，包括 HTTPS 加密、服务器访问控制和定期安全审查，以保护您的数据在传输和处理过程中的安全。</p>
+
+  <h2>7. 您的权利与选择</h2>
+  <ul>
+    <li><strong>随时退出</strong> — 卸载扩展程序即可停止所有数据收集。</li>
+    <li><strong>控制数据发送时机</strong> — PolyTell 仅在您主动触发时分析页面，不会进行后台数据收集。</li>
+    <li><strong>数据删除</strong> — 联系我们，可请求删除与您的 UUID 相关的任何临时存储数据。</li>
+  </ul>
+
+  <h2>8. 儿童隐私</h2>
+  <p>PolyTell 不面向 13 岁以下儿童，我们不会故意收集儿童的数据。</p>
+
+  <h2>9. 政策变更</h2>
+  <p>我们可能会不时更新本隐私政策。变更将在本页面发布并更新修订日期。变更后继续使用扩展程序即表示您接受修订后的政策。</p>
+
+  <h2>10. 联系我们</h2>
+  <p>如果您对本隐私政策或我们的数据处理方式有任何疑问，请通过以下方式联系我们：</p>
+  <p><strong>邮箱：</strong><a href="mailto:support@polytell.app">support@polytell.app</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="logo" style="font-size:14px; display:inline-flex; align-items:center; gap:6px; margin-bottom:12px;">
+    <img src="icon100x.png" alt="" style="width:22px;height:22px;border-radius:5px" />
+    PolyTell
+  </a>
+  <div>
+    <a href="privacy.html" data-i18n="foot.privacy">Privacy</a>
+    <a href="#" data-i18n="foot.terms">Terms</a>
+    <a href="mailto:support@polytell.app" data-i18n="foot.contact">Contact</a>
+  </div>
+  <div style="margin-top:12px;">&copy; 2025 PolyTell</div>
+</footer>
+
+<script>
+let curLang = 'en';
+
+function setLang(lang) {
+  curLang = lang;
+  document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+  document.getElementById('content-zh').style.display = lang === 'zh' ? 'block' : 'none';
+  document.documentElement.lang = lang;
+  document.title = lang === 'zh' ? '隐私政策 — PolyTell' : 'Privacy Policy — PolyTell';
+  document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN' : '中';
+
+  // Update nav & footer i18n
+  const dict = {
+    en: { 'nav.home': 'Home', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms', 'foot.contact': 'Contact' },
+    zh: { 'nav.home': '首页', 'foot.privacy': '隐私政策', 'foot.terms': '使用条款', 'foot.contact': '联系我们' }
+  };
+  const d = dict[lang] || dict.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (d[key] != null) el.textContent = d[key];
+  });
+
+  try { localStorage.setItem('polytell-lang', lang); } catch(e) {}
+}
+
+function toggleLang() {
+  setLang(curLang === 'en' ? 'zh' : 'en');
+}
+
+function detectLang() {
+  try {
+    const saved = localStorage.getItem('polytell-lang');
+    if (saved === 'en' || saved === 'zh') return saved;
+  } catch(e) {}
+  const bl = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  return bl.startsWith('zh') ? 'zh' : 'en';
+}
+
+// Init
+const initLang = detectLang();
+if (initLang !== 'en') setLang(initLang);
+</script>
+</body>
+</html>
