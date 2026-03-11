@@ -262,6 +262,54 @@
     .fcard-t { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
     .fcard-d { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 
+    /* ── BLOG ── */
+    .blog {
+      padding: 80px 24px; max-width: 1080px; margin: 0 auto;
+    }
+    .blog-hd {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .blog-hd h2 { font-size: 26px; font-weight: 900; letter-spacing: -.5px; }
+    .blog-hd a { font-size: 13px; color: var(--brand); }
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .bcard {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      transition: border-color .25s, transform .25s;
+      display: flex; flex-direction: column;
+    }
+    .bcard:hover { border-color: rgba(59,122,232,.3); transform: translateY(-3px); }
+    .bcard-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .bcard-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .bcard-tag {
+      display: inline-block; padding: 2px 9px; border-radius: 20px;
+      background: rgba(59,122,232,.12); border: 1px solid rgba(59,122,232,.25);
+      font-size: 11px; font-weight: 600; color: var(--brand);
+      text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px;
+    }
+    .bcard-title {
+      font-size: 16px; font-weight: 800; line-height: 1.4;
+      color: var(--txt); margin-bottom: 8px; letter-spacing: -.2px;
+    }
+    .bcard-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
+    .bcard-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--faint);
+    }
+    .bcard-read { color: var(--brand); font-weight: 600; font-size: 13px; }
+    .blog-lang { display: flex; gap: 6px; align-items: center; }
+    .blog-lang a {
+      padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+      border: 1px solid var(--border); color: var(--muted);
+      transition: all .15s;
+    }
+    .blog-lang a:hover { border-color: var(--brand); color: var(--brand); }
+
     /* ── CTA ── */
     .cta {
       padding: 80px 24px; text-align: center;
@@ -313,6 +361,7 @@
     <div class="nav-links">
       <a href="#demo" data-i18n="nav.demo">Demo</a>
       <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#blog" data-i18n="nav.blog">Blog</a>
     </div>
     <a href="https://chromewebstore.google.com/detail/polytell-beta/ingacchlhjdiblkinkgdejdleokgelak" target="_blank" class="btn" style="margin-left:auto" data-i18n="nav.chrome">Add to Chrome</a>
     <button class="lang-btn" id="langBtn" onclick="toggleLang()">中</button>
@@ -586,6 +635,36 @@
   </div>
 </section>
 
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="blog-hd">
+    <h2 data-i18n="blog.title">Blog</h2>
+  </div>
+  <div class="blog-grid">
+
+    <!-- Article 1: EN -->
+    <a class="bcard" href="blog-how-ai-detects-arbitrage-polymarket.html">
+      <img class="bcard-img"
+        src="https://assets.seobotai.com/polytell.app/69b11aee12de151ab0290a63/68c450d2ec35b716074a49e8fd384ba7.jpg"
+        alt="How AI Detects Arbitrage in Polymarket"
+        loading="lazy" />
+      <div class="bcard-body">
+        <span class="bcard-tag" data-i18n="blog.tag.trading">Trading &amp; AI</span>
+        <div class="bcard-title" data-i18n="blog.a1.title">How AI Detects Arbitrage in Polymarket (2026 Guide)</div>
+        <div class="bcard-desc" data-i18n="blog.a1.desc">Real-time WebSocket scanning, ML mispricing detection, and millisecond execution — how bots earned $40M in one year.</div>
+        <div class="bcard-foot">
+          <div class="blog-lang">
+            <a href="blog-how-ai-detects-arbitrage-polymarket.html">EN</a>
+            <a href="blog-ai-polymarket-套利检测-zh.html">中文</a>
+          </div>
+          <span class="bcard-read" data-i18n="blog.read">Read →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="download">
   <h2 data-i18n="cta.title">Start reading between the lines</h2>
@@ -703,6 +782,12 @@ const I18N = {
     'foot.privacy': 'Privacy',
     'foot.terms': 'Terms',
     'foot.contact': 'Contact',
+    'nav.blog': 'Blog',
+    'blog.title': 'Blog',
+    'blog.tag.trading': 'Trading & AI',
+    'blog.a1.title': 'How AI Detects Arbitrage in Polymarket (2026 Guide)',
+    'blog.a1.desc': 'Real-time WebSocket scanning, ML mispricing detection, and millisecond execution — how bots earned $40M in one year.',
+    'blog.read': 'Read →',
     'page.title': 'PolyTell — Polymarket News & Real-time Odds',
     'page.desc': 'The ultimate tool for Polymarket News. See real-time prediction odds and market data directly inside the news articles you read.'
   },
@@ -791,6 +876,12 @@ const I18N = {
     'foot.privacy': '隐私政策',
     'foot.terms': '使用条款',
     'foot.contact': '联系我们',
+    'nav.blog': '博客',
+    'blog.title': '博客',
+    'blog.tag.trading': '交易 & AI',
+    'blog.a1.title': 'AI如何检测Polymarket套利机会（2026完整指南）',
+    'blog.a1.desc': '实时 WebSocket 扫描、机器学习价格错配识别、毫秒级交易执行——AI机器人一年赚4000万美元的秘密。',
+    'blog.read': '阅读 →',
     'page.title': 'PolyTell — Polymarket 新闻与实时赔率',
     'page.desc': 'Polymarket 新闻的最佳伴侣。在你阅读的新闻中直接显示实时 Polymarket 预测赔率和市场数据。'
   }
