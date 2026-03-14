@@ -106,6 +106,41 @@
     }
     .btn-lg:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,122,232,.45); }
 
+    /* ── VIDEO ── */
+    .video-section {
+      padding: 32px 16px 60px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .yt-facade {
+      position: relative; padding-bottom: 56.25%; height: 0;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+      border: 1px solid var(--border);
+      cursor: pointer; background: #000;
+    }
+    .yt-facade img {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .3s, opacity .3s;
+    }
+    .yt-facade:hover img { transform: scale(1.02); opacity: .85; }
+    .yt-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(0,0,0,.7);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .2s;
+      pointer-events: none;
+    }
+    .yt-facade:hover .yt-play { background: #FF0000; transform: translate(-50%,-50%) scale(1.1); }
+    .yt-play svg { width: 36px; height: 36px; fill: #fff; margin-left: 4px; }
+    .yt-facade iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+
     /* ── DEMO ── */
     .demo { padding: 16px 24px 100px; max-width: 1080px; margin: 0 auto; }
     .demo-cta { text-align: center; margin-top: 32px; }
@@ -371,6 +406,28 @@
 <!-- HERO -->
 <section class="hero">
   <h1 data-i18n="hero.title">Turn any news into <em>Polymarket predictions.</em></h1>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <!-- EN video facade -->
+  <div id="video-en" class="yt-facade" onclick="playVideo(this,'I6AURJkC7Fo')">
+    <img src="https://i.ytimg.com/vi/I6AURJkC7Fo/maxresdefault.jpg"
+         onerror="this.src='https://i.ytimg.com/vi/I6AURJkC7Fo/hqdefault.jpg'"
+         alt="PolyTell Demo" />
+    <div class="yt-play">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
+  <!-- ZH video facade -->
+  <div id="video-zh" class="yt-facade" onclick="playVideo(this,'HE-HXok-FF4')" style="display:none">
+    <img src="https://i.ytimg.com/vi/HE-HXok-FF4/maxresdefault.jpg"
+         onerror="this.src='https://i.ytimg.com/vi/HE-HXok-FF4/hqdefault.jpg'"
+         alt="PolyTell 演示" />
+    <div class="yt-play">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
 </section>
 
 <!-- DEMO -->
@@ -989,6 +1046,19 @@ function setLang(lang) {
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.setAttribute('content', dict['page.desc']);
   document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN' : '中';
+  // toggle video
+  const vEn = document.getElementById('video-en');
+  const vZh = document.getElementById('video-zh');
+  if (vEn) vEn.style.display = lang === 'zh' ? 'none' : 'block';
+  if (vZh) vZh.style.display = lang === 'zh' ? 'block' : 'none';
+  // reset whichever is hidden back to facade (stop playback)
+  [vEn, vZh].forEach(v => {
+    if (v && v.style.display === 'none') {
+      const iframe = v.querySelector('iframe');
+      if (iframe) iframe.remove();
+      v.style.cursor = 'pointer';
+    }
+  });
   try { localStorage.setItem('polytell-lang', lang); } catch(e) {}
 }
 
@@ -1053,6 +1123,17 @@ function switchTab(tab) {
 document.querySelectorAll('.dtab').forEach(t =>
   t.addEventListener('click', () => switchTab(t.dataset.tab))
 );
+
+// ── YouTube facade ──
+function playVideo(el, videoId) {
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.allowFullscreen = true;
+  el.style.cursor = 'default';
+  el.querySelectorAll('img, .yt-play').forEach(n => n.style.display = 'none');
+  el.appendChild(iframe);
+}
 
 // ── Init ──
 const initLang = detectLang();
